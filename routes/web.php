@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\TesteController;
+use App\Http\Controllers\FornecedorController;
 
 
 Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
@@ -17,6 +19,14 @@ Route::get('/login', function() { return 'Login';})->name('site.login');
 
 
 
+
+
+//----------------------------------------------------------------------------------------
+
+//Parametros da rota para o controlador
+
+Route::get('/teste/{p1}/{p2}', [TesteController::class, 'teste'])->name('teste');
+
 //----------------------------------------------------------------------------------------
 
 //Rota de contigencia (fallback)
@@ -24,7 +34,6 @@ Route::get('/login', function() { return 'Login';})->name('site.login');
 Route::fallback(function(){
     echo 'A rota acessada nao existe. <a href="' . route('site.index') . '">Clique aqui</a> para ir para a pagina inicial';
 });
-
 
 //----------------------------------------------------------------------------------------
 
@@ -48,9 +57,7 @@ Route::prefix('/app')->group(function () {
         return 'Clientes';
     })->name('app.clientes');
 
-    Route::get('/fornecedores', function () {
-        return 'Fornecedores';
-    })->name('app.fornecedores');
+    Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('app.fornecedores');
 
     Route::get('/produtos', function () {
         return 'Produtos';

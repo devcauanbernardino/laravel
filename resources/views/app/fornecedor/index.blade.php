@@ -78,12 +78,23 @@
     <br>
     Status: {{ $fornecedores[0]['status'] }}
     <br>
+     
     @isset($fornecedores[0]['cnpj'])
         CNPJ: {{ $fornecedores[0]['cnpj'] }} 
         @empty($fornecedores[0]['cnpj'])
             <p>O campo CNPJ esta vazio</p>
         @endempty
     @endisset
+@endisset
+
+{{-- ---------------------------------------------------------------------------- --}}
+
+@isset($fornecedores) 
+    Fornecedor: {{ $fornecedores[0]['nome'] }}
+    <br>
+    Status: {{ $fornecedores[0]['status'] }}
+    <br>
+    CNPJ: {{ $fornecedores[1]['cnpj'] ?? 'CNPJ nao informado' }} <!--operador de coalescencia nula, se o valor for null, ele retorna o valor apos os dois pontos-->
 @endisset
 
 {{-- ---------------------------------------------------------------------------- --}}

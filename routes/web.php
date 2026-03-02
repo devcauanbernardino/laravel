@@ -20,7 +20,6 @@ Route::get('/login', function() { return 'Login';})->name('site.login');
 
 
 
-
 //----------------------------------------------------------------------------------------
 
 //Parametros da rota para o controlador
